@@ -12,10 +12,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.btnHomepage.setOnClickListener {
-            val uri = Uri.parse("https://github.com/styg0604")
+            val uri = Uri.parse("https://www.kumoh.ac.kr/")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
+        }
+
+        binding.btnMap.setOnClickListener {
+            val uri = Uri.parse("geo:0,0?z=17&q=경북 구미시 대학로 61")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        }
+
+        binding.btnTelephone.setOnClickListener {
+            val uri = Uri.parse("sms:0544787354")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+
+            if(intent.resolveActivity(packageManager) != null)
+                startActivity(intent)
         }
     }
 }
